@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <!-- Main octopus head (circle) -->
+  <circle cx="16" cy="16" r="14" fill="#24292e" />
+  
+  <!-- Eyes -->
+  <circle cx="11" cy="13" r="2.5" fill="white" />
+  <circle cx="21" cy="13" r="2.5" fill="white" />
+  
+  <!-- Smile -->
+  <path d="M12,20 Q16,23 20,20" stroke="white" stroke-width="1.5" fill="none" />
+  
+  <!-- Tentacles -->
+  <path d="M6,18 Q4,24 6,28" stroke="#24292e" stroke-width="2" />
+  <path d="M26,18 Q28,24 26,28" stroke="#24292e" stroke-width="2" />
+  
+  <!-- Top tentacles / "ears" -->
+  <path d="M10,6 Q6,3 8,0" stroke="#24292e" stroke-width="2" />
+  <path d="M22,6 Q26,3 24,0" stroke="#24292e" stroke-width="2" />
+</svg>
