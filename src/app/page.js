@@ -10,11 +10,18 @@ export default function Home() {
   const [participants, setParticipants] = useState([]);
   const [winner, setWinner] = useState(null);
   const [raffleStarted, setRaffleStarted] = useState(false);
+  const [isCsvImport, setIsCsvImport] = useState(false);
 
   // Start the raffle with the given number of participants
   const handleStartRaffle = (participantList) => {
     setParticipants(participantList);
     setRaffleStarted(true);
+    // Check if the participant list is an array of objects (from CSV)
+    if (participantList && participantList.length > 0 && typeof participantList[0] === 'object' && participantList[0] !== null && 'id' in participantList[0]) {
+      setIsCsvImport(true);
+    } else {
+      setIsCsvImport(false);
+    }
   };
 
   // Handle winner selection
@@ -45,7 +52,7 @@ export default function Home() {
           <div className="flex items-center space-x-2">
             {/* Octocat icon */}
             <img src="/octocat.png" alt="Octocat" className="w-10 h-10" />
-            <h1 className="text-2xl font-bold">Octocat Raffle</h1>
+            <h1 className="text-2xl font-bold">OctoRaffle</h1>
           </div>
         </div>
       </header>
@@ -68,29 +75,23 @@ export default function Home() {
             <ParticipantSetup onStartRaffle={handleStartRaffle} />
           </div>
         ) : (
-          <div className="flex flex-col md:flex-row gap-8 items-start">
+          <div className="flex flex-col md:flex-row gap-8 items-stretch">
             {participants.length > 0 ? (
               <>
-                <div className="flex-1">
+                <div className="w-[700px]">
                   <div className="bg-white rounded-lg shadow-lg p-8 mb-6">
-                    <div className="flex justify-between items-center mb-6">
-                      <h3 className="text-xl font-semibold text-gray-800">
-                        Prize Wheel
-                      </h3>
-                      <div className="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
-                        Participants: {participants.length}
-                      </div>
-                    </div>
                     <PrizeWheel 
                       participants={participants} 
                       onSelectWinner={handleSelectWinner}
                     />
                   </div>
                 </div>
-                <div className="w-full md:w-[350px] lg:w-[400px] xl:w-[450px] max-h-[600px] overflow-y-auto sticky top-28">
-                  <h3 className="text-lg font-bold mb-2 text-gray-800">Participants List</h3>
-                  <ParticipantTable participants={participants} />
-                </div>
+                {isCsvImport && (
+                  <div className="w-full md:w-[350px] lg:w-[400px] xl:w-[450px] overflow-y-auto sticky top-28">
+                    <h3 className="text-lg font-bold mb-2 text-gray-800">Participants List</h3>
+                    <ParticipantTable participants={participants} />
+                  </div>
+                )}
               </>
             ) : (
               <div className="text-center py-10 bg-white rounded-lg shadow-lg max-w-md mx-auto">

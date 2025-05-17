@@ -75,7 +75,7 @@ const ParticipantSetup = ({ onStartRaffle }) => {
     <div className="flex flex-col md:flex-row gap-8">
       <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8 border border-gray-200">
       <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
-        Set Up Your Octocat Raffle
+        Set Up Your OctoRaffle
       </h2>
       
       <div className="mb-6 flex justify-center">
@@ -105,7 +105,7 @@ const ParticipantSetup = ({ onStartRaffle }) => {
                   setError('');
                 }
               }}
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-center text-lg font-bold [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-center text-lg font-bold text-black [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             />
           </div>
           {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
