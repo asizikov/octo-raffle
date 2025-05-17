@@ -5,6 +5,7 @@ A fun and interactive Prize Wheel application built with Next.js for randomly se
 ## Features
 
 - Set the number of participants (minimum 2)
+- Upload participants from a CSV file
 - Interactive spinning wheel with smooth animation
 - Automatic winner selection with celebration effect
 - Option to remove winners and continue the raffle
@@ -36,6 +37,15 @@ npm run dev
 ```
 
 4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Usage
+
+1.  **Set up Participants:**
+    *   Manually enter the number of participants using the input field.
+    *   Alternatively, click the "Upload CSV" button to select a CSV file from your computer. The CSV file should contain a single column with participant names, one name per row, without a header.
+2.  **Spin the Wheel:** Once participants are set up, click the "Spin" button to start the raffle.
+3.  **View Winner:** The wheel will spin and land on a winner, who will be announced.
+4.  **Continue Raffle (Optional):** You can choose to remove the winner from the list and spin again to select more winners.
 
 ## Building for Production
 
