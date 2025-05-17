@@ -22,7 +22,7 @@ A fun and interactive Prize Wheel application built with Next.js for randomly se
 
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/octo-raffle.git
+git clone https://github.com/asizikov/octo-raffle.git
 cd octo-raffle
 ```
 

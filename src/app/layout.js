@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Octocat Raffle - Prize Wheel",
+  title: "OctoRaffle - Prize Wheel",
   description: "A fun and interactive wheel to randomly select winners for your raffle or contest",
   keywords: "raffle, prize wheel, random selection, octocat, github",
   icons: {
