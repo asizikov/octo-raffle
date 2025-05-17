@@ -88,14 +88,6 @@ const PrizeWheel = ({ participants, onSelectWinner, winningNumber }) => {
     const targetAngle = Math.random() * 2 * Math.PI;
     const totalRotation = targetRotations * 2 * Math.PI + targetAngle;
     
-    // Calculate which number will be selected
-    const sliceAngle = (2 * Math.PI) / participants.length;
-    const normalizedTargetAngle = targetAngle % (2 * Math.PI);
-    
-    // Calculate the selected index based on the right-side arrow position
-    const selectedIndex = Math.floor(normalizedTargetAngle / sliceAngle);
-    const winner = participants[selectedIndex % participants.length];
-    
     // Animation duration
     const duration = 5000; // ms
     const start = performance.now();
@@ -115,6 +107,27 @@ const PrizeWheel = ({ participants, onSelectWinner, winningNumber }) => {
         requestAnimationFrame(animate);
       } else {
         setIsSpinning(false);
+        
+        // Winner calculation:
+        // 1. Calculate the angle of each slice
+        const sliceAngle = (2 * Math.PI) / participants.length;
+        
+        // 2. Get the effective rotation (normalized between 0 and 2π)
+        const normalizedRotation = currentRotation % (2 * Math.PI);
+        
+        // 3. The pointer is fixed at 12 o'clock (3π/2 radians)
+        const pointerAngle = (3 * Math.PI / 2 - normalizedRotation + 2 * Math.PI) % (2 * Math.PI);
+        
+        // 4. Determine which slice number is at the pointer position
+        let selectedIndex = Math.floor((pointerAngle + sliceAngle / 2) / sliceAngle) % participants.length;
+        
+        // Adjust for rounding errors or edge cases
+        if (selectedIndex < 0) {
+          selectedIndex += participants.length;
+        }
+        
+        const winner = participants[selectedIndex];
+        
         onSelectWinner(winner);
       }
     };
@@ -126,15 +139,15 @@ const PrizeWheel = ({ participants, onSelectWinner, winningNumber }) => {
     <div className="relative mx-auto">
       <canvas 
         ref={canvasRef}
-        width={400}
-        height={400}
+        width={600}
+        height={600}
         className="border-4 border-gray-300 rounded-full shadow-lg"
-        style={{ transform: `rotate(${rotation}rad)` }}
       />
       
-      {/* Arrow pointer */}
+      {/* Arrow pointer - positioned at the top center above the wheel, pointing down */}
       <div 
-        className="absolute top-1/2 right-0 transform translate-y-[-50%] translate-x-[50%] rotate-90 z-10"
+        className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full rotate-0 z-10"
+        ref={arrowRef}
       >
         <div className="w-8 h-12 relative">
           <div 
