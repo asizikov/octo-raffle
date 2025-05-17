@@ -58,7 +58,12 @@ const PrizeWheel = ({ participants, onSelectWinner, winningNumber }) => {
       ctx.textAlign = 'right';
       ctx.fillStyle = '#FFFFFF';
       ctx.font = 'bold 24px Arial';
-      ctx.fillText(participant.toString(), radius - 30, 8);
+      // Show number if participant is a number, or ID if object, or fallback to string
+      let label = participant;
+      if (typeof participant === 'object' && participant !== null) {
+        label = participant.id || participant.name || '';
+      }
+      ctx.fillText(label.toString(), radius - 30, 8);
       ctx.restore();
     });
     
