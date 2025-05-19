@@ -51,7 +51,7 @@ export default function Home() {
         <div className="container mx-auto px-4 flex items-center justify-between">
           <div className="flex items-center space-x-2">
             {/* Octocat icon */}
-            <img src="/octocat.png" alt="Octocat" className="w-10 h-10" />
+            <img src="/octo-raffle/octocat.png" alt="Octocat" className="w-10 h-10" />
             <h1 className="text-2xl font-bold">OctoRaffle</h1>
           </div>
         </div>

@@ -32,7 +32,7 @@ export default function RootLayout({ children }) {
       >
         <main>
           <div className="flex justify-center py-4">
-            <img src="/octocat.png" alt="Octocat" className="h-16 w-16" />
+            <img src="/octo-raffle/octocat.png" alt="Octocat" className="h-16 w-16" />
           </div>
           {children}
         </main>

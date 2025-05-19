@@ -82,7 +82,7 @@ const ParticipantSetup = ({ onStartRaffle }) => {
         <div className="w-32 h-32 text-center">
           {/* Octocat icon */}
           <div className="relative mx-auto mt-2">
-            <img src="/octocat.png" alt="Octocat" className="w-24 h-24" />
+            <img src="/octo-raffle/octocat.png" alt="Octocat" className="w-24 h-24" />
           </div>
         </div>
       </div>
