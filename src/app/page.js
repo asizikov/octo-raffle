@@ -125,7 +125,7 @@ export default function Home() {
                   <ul className="list-disc list-inside space-y-1 text-yellow-700">
                     <li>The first row must be the header with column names</li>
                     <li>You need at least 2 participants for the raffle</li>
-                    <li>If both "Name" and "Full name" columns exist, "Full name" will be used if "Name" is empty</li>
+                    <li>If both &quot;Name&quot; and &quot;Full name&quot; columns exist, &quot;Full name&quot; will be used if &quot;Name&quot; is empty</li>
                     <li>Empty rows will be ignored</li>
                   </ul>
                 </div>
