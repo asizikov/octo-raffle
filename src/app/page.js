@@ -1,10 +1,12 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import ParticipantSetup from './components/ParticipantSetup';
 import PrizeWheel from './components/PrizeWheel';
 import WinnerAnnouncement from './components/WinnerAnnouncement';
 import ParticipantTable from './components/ParticipantTable';
+import HelpModal from './components/HelpModal';
 
 export default function Home() {
   const [participants, setParticipants] = useState([]);
@@ -52,7 +54,7 @@ export default function Home() {
         <div className="container mx-auto px-4 flex items-center justify-between">
           <div className="flex items-center space-x-2">
             {/* Octocat icon */}
-            <img src="/octo-raffle/octocat.png" alt="Octocat" className="w-10 h-10" />
+            <Image src="/octo-raffle/octocat.png" alt="Octocat" width={40} height={40} className="w-10 h-10" />
             <h1 className="text-2xl font-bold">OctoRaffle</h1>
           </div>
           
@@ -68,81 +70,7 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Help Modal */}
-      {showHelp && (
-        <div 
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
-          onClick={(e) => {
-            if (e.target === e.currentTarget) {
-              setShowHelp(false);
-            }
-          }}
-        >
-          <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="p-6">
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="text-2xl font-bold text-gray-800">CSV File Format Help</h2>
-                <button
-                  onClick={() => setShowHelp(false)}
-                  className="text-gray-500 hover:text-gray-700 text-2xl"
-                >
-                  ×
-                </button>
-              </div>
-              
-              <div className="space-y-4 text-gray-700">
-                <p>To upload a participants list, your CSV file must follow these requirements:</p>
-                
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <h3 className="font-bold mb-2">File Format:</h3>
-                  <ul className="list-disc list-inside space-y-1">
-                    <li>Use semicolon (;) as the separator</li>
-                    <li>Save the file with .csv extension</li>
-                    <li>Use UTF-8 encoding for special characters</li>
-                  </ul>
-                </div>
-                
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <h3 className="font-bold mb-2">Required Columns:</h3>
-                  <ul className="list-disc list-inside space-y-1">
-                    <li><strong>ID</strong> - Unique identifier for each participant</li>
-                    <li><strong>Name</strong> - Participant's name (or use "Full name")</li>
-                  </ul>
-                </div>
-                
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <h3 className="font-bold mb-2">Example CSV Content:</h3>
-                  <pre className="bg-gray-800 text-green-400 p-3 rounded text-sm overflow-x-auto">
-{`ID;Name;Full name
-001;John;John Doe
-002;Jane;Jane Smith
-003;Bob;Bob Johnson`}
-                  </pre>
-                </div>
-                
-                <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4">
-                  <h3 className="font-bold text-yellow-800 mb-2">Important Notes:</h3>
-                  <ul className="list-disc list-inside space-y-1 text-yellow-700">
-                    <li>The first row must be the header with column names</li>
-                    <li>You need at least 2 participants for the raffle</li>
-                    <li>If both &quot;Name&quot; and &quot;Full name&quot; columns exist, &quot;Full name&quot; will be used if &quot;Name&quot; is empty</li>
-                    <li>Empty rows will be ignored</li>
-                  </ul>
-                </div>
-              </div>
-              
-              <div className="mt-6 flex justify-end">
-                <button
-                  onClick={() => setShowHelp(false)}
-                  className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
-                >
-                  Got it!
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      <HelpModal isOpen={showHelp} onClose={() => setShowHelp(false)} />
 
       <div className="flex-1 overflow-hidden flex flex-col">
         <div className="container mx-auto px-4 py-6 flex flex-col h-full">

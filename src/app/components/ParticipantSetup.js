@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
+import Image from 'next/image';
 import ParticipantTable from './ParticipantTable';
 
 const ParticipantSetup = ({ onStartRaffle }) => {
@@ -82,7 +83,7 @@ const ParticipantSetup = ({ onStartRaffle }) => {
         <div className="w-32 h-32 text-center">
           {/* Octocat icon */}
           <div className="relative mx-auto mt-2">
-            <img src="/octo-raffle/octocat.png" alt="Octocat" className="w-24 h-24" />
+            <Image src="/octo-raffle/octocat.png" alt="Octocat" width={96} height={96} className="w-24 h-24" />
           </div>
         </div>
       </div>
