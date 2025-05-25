@@ -28,12 +28,9 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/octocat-favicon.svg" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen pb-16`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen flex flex-col overflow-hidden`}
       >
-        <main>
-          <div className="flex justify-center py-4">
-            <img src="/octo-raffle/octocat.png" alt="Octocat" className="h-16 w-16" />
-          </div>
+        <main className="flex-1 overflow-y-auto">
           {children}
         </main>
         <Footer />
