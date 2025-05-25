@@ -141,42 +141,45 @@ const PrizeWheel = ({ participants, onSelectWinner, winningNumber }) => {
   };
 
   return (
-    <div className="relative mx-auto">
-      <canvas 
-        ref={canvasRef}
-        width={600}
-        height={600}
-        className="border-4 border-gray-300 rounded-full shadow-lg"
-      />
-      
-      {/* Arrow pointer - positioned at the top center above the wheel, pointing down */}
-      <div 
-        className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full rotate-0 z-10"
-        ref={arrowRef}
-      >
-        <div className="w-8 h-12 relative">
-          <div 
-            className="absolute top-0 left-0 w-0 h-0"
-            style={{ 
-              borderLeft: '16px solid transparent',
-              borderRight: '16px solid transparent',
-              borderTop: '40px solid #e6305a'
-            }}
-          />
-          <div 
-            className="absolute top-0 left-0 w-0 h-0"
-            style={{ 
-              borderLeft: '12px solid transparent',
-              borderRight: '12px solid transparent',
-              borderTop: '32px solid #f85a7c',
-              marginLeft: '2px',
-              marginTop: '2px'
-            }}
-          />
+    <div className="relative mx-auto flex flex-col h-full">
+      <div className="flex-1 flex items-center justify-center">
+        <canvas 
+          ref={canvasRef}
+          width={750}
+          height={750}
+          className="border-4 border-gray-300 rounded-full shadow-lg max-w-full max-h-full"
+          style={{ width: 'auto', height: 'auto' }}
+        />
+        
+        {/* Arrow pointer - positioned at the top center above the wheel, pointing down */}
+        <div 
+          className="absolute top-12 left-1/2 transform -translate-x-1/2 -translate-y-full rotate-0 z-10"
+          ref={arrowRef}
+        >
+          <div className="w-8 h-12 relative">
+            <div 
+              className="absolute top-0 left-0 w-0 h-0"
+              style={{ 
+                borderLeft: '16px solid transparent',
+                borderRight: '16px solid transparent',
+                borderTop: '40px solid #e6305a'
+              }}
+            />
+            <div 
+              className="absolute top-0 left-0 w-0 h-0"
+              style={{ 
+                borderLeft: '12px solid transparent',
+                borderRight: '12px solid transparent',
+                borderTop: '32px solid #f85a7c',
+                marginLeft: '2px',
+                marginTop: '2px'
+              }}
+            />
+          </div>
         </div>
       </div>
       
-      <div className="mt-10 text-center">
+      <div className="mt-4 text-center flex-shrink-0">
         <button
           onClick={spinWheel}
           disabled={isSpinning}
