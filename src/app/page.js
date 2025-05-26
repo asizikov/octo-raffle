@@ -55,7 +55,7 @@ export default function Home() {
           <div className="flex items-center space-x-2">
             {/* Octocat icon */}
             <Image src="/octo-raffle/octocat.png" alt="Octocat" width={40} height={40} className="w-10 h-10" />
-            <h1 className="text-2xl font-bold">OctoRaffle</h1>
+            <h1 className="text-2xl font-bold">OctoRaffle - Prize Wheel</h1>
           </div>
           
           {/* Help button */}
@@ -75,9 +75,6 @@ export default function Home() {
       <div className="flex-1 overflow-hidden flex flex-col">
         <div className="container mx-auto px-4 py-6 flex flex-col h-full">
           <div className="text-center mb-6 flex-shrink-0">
-            <h2 className="text-3xl font-bold text-gray-800 mb-2">
-              Prize Wheel
-            </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               {!raffleStarted 
                 ? "Set up your raffle by entering the number of participants, then spin the wheel to select a random winner!"
