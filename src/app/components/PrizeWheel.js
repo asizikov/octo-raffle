@@ -73,13 +73,6 @@ const PrizeWheel = ({ participants, onSelectWinner, winningNumber }) => {
     ctx.fillStyle = '#24292e';
     ctx.fill();
     
-    // Draw Octocat silhouette (simplified)
-    ctx.fillStyle = '#FFFFFF';
-    ctx.beginPath();
-    ctx.arc(centerX - 7, centerY - 5, 4, 0, 2 * Math.PI); // left eye
-    ctx.arc(centerX + 7, centerY - 5, 4, 0, 2 * Math.PI); // right eye
-    ctx.fill();
-    
   }, [participants, rotation]);
 
   // Function to spin the wheel
@@ -162,7 +155,7 @@ const PrizeWheel = ({ participants, onSelectWinner, winningNumber }) => {
         </button>
       </div>
 
-      <div className="flex-1 flex items-center justify-center">
+      <div className="flex-1 flex items-center justify-center relative">
         <canvas 
           ref={canvasRef}
           width={750}
@@ -171,9 +164,9 @@ const PrizeWheel = ({ participants, onSelectWinner, winningNumber }) => {
           style={{ width: 'auto', height: 'auto' }}
         />
         
-        {/* Arrow pointer - positioned at the top center above the wheel, pointing down */}
+        {/* Arrow pointer - positioned at the center of the wheel */}
         <div 
-          className="absolute top-12 left-1/2 transform -translate-x-1/2 -translate-y-full rotate-0 z-10"
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[calc(50%+15px)] rotate-180 z-10"
           ref={arrowRef}
         >
           <div className="w-8 h-12 relative">
