@@ -40,7 +40,7 @@ const HelpModal = ({ isOpen, onClose }) => {
               <h3 className="font-bold mb-2">Required Columns:</h3>
               <ul className="list-disc list-inside space-y-1">
                 <li><strong>ID</strong> - Unique identifier for each participant</li>
-                <li><strong>Name</strong> - Participant name (or use "Full name")</li>
+                <li><strong>Name</strong> - Participant name (or use &quot;Full name&quot;)</li>
               </ul>
             </div>
             
@@ -88,7 +88,7 @@ ID;Name;Full name
                 <li>You need at least 2 participants for the raffle</li>
                 <li>For CSV files: Use semicolon (;) as separator</li>
                 <li>For Excel files: Use the first worksheet</li>
-                <li>If both "Name" and "Full name" columns exist, "Full name" will be used if "Name" is empty</li>
+                <li>If both &quot;Name&quot; and &quot;Full name&quot; columns exist, &quot;Full name&quot; will be used if &quot;Name&quot; is empty</li>
                 <li>Empty rows will be ignored</li>
               </ul>
             </div>
