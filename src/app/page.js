@@ -12,18 +12,18 @@ export default function Home() {
   const [participants, setParticipants] = useState([]);
   const [winner, setWinner] = useState(null);
   const [raffleStarted, setRaffleStarted] = useState(false);
-  const [isCsvImport, setIsCsvImport] = useState(false);
+  const [isFileImport, setIsFileImport] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
 
   // Start the raffle with the given number of participants
   const handleStartRaffle = (participantList) => {
     setParticipants(participantList);
     setRaffleStarted(true);
-    // Check if the participant list is an array of objects (from CSV)
+    // Check if the participant list is an array of objects (from file import)
     if (participantList && participantList.length > 0 && typeof participantList[0] === 'object' && participantList[0] !== null && 'id' in participantList[0]) {
-      setIsCsvImport(true);
+      setIsFileImport(true);
     } else {
-      setIsCsvImport(false);
+      setIsFileImport(false);
     }
   };
 
@@ -62,7 +62,7 @@ export default function Home() {
           <button
             onClick={() => setShowHelp(!showHelp)}
             className="flex items-center space-x-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors duration-200"
-            title="CSV Format Help"
+            title="File Format Help"
           >
             <span className="text-lg">❓</span>
             <span className="font-medium">Help</span>
@@ -102,7 +102,7 @@ export default function Home() {
                       />
                     </div>
                   </div>
-                  {isCsvImport && (
+                  {isFileImport && (
                     <div className="w-full md:w-[350px] lg:w-[400px] xl:w-[450px] flex flex-col">
                       <h3 className="text-lg font-bold mb-2 text-gray-800 flex-shrink-0">Participants List</h3>
                       <div className="flex-1 min-h-0">
