@@ -142,6 +142,26 @@ const PrizeWheel = ({ participants, onSelectWinner, winningNumber }) => {
 
   return (
     <div className="relative mx-auto flex flex-col h-full">
+      {/* Spin button positioned at top right */}
+      <div className="absolute top-0 right-0 z-20">
+        <button
+          onClick={spinWheel}
+          disabled={isSpinning}
+          className={`
+            px-6 py-3 rounded-full font-bold text-white 
+            shadow-lg transform transition-all duration-300 
+            flex items-center justify-center space-x-2
+            ${isSpinning 
+              ? 'bg-gray-500 cursor-not-allowed opacity-70' 
+              : 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 hover:scale-105'
+            }
+          `}
+        >
+          <span className="text-xl">{isSpinning ? '⏳' : '🔄'}</span>
+          <span className="text-sm sm:text-base">{isSpinning ? 'Spinning...' : 'Spin the Wheel'}</span>
+        </button>
+      </div>
+
       <div className="flex-1 flex items-center justify-center">
         <canvas 
           ref={canvasRef}
@@ -177,25 +197,6 @@ const PrizeWheel = ({ participants, onSelectWinner, winningNumber }) => {
             />
           </div>
         </div>
-      </div>
-      
-      <div className="mt-4 text-center flex-shrink-0">
-        <button
-          onClick={spinWheel}
-          disabled={isSpinning}
-          className={`
-            px-8 py-4 rounded-full font-bold text-white 
-            shadow-lg transform transition-all duration-300 
-            flex items-center justify-center space-x-3 mx-auto
-            ${isSpinning 
-              ? 'bg-gray-500 cursor-not-allowed opacity-70' 
-              : 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 hover:scale-105'
-            }
-          `}
-        >
-          <span className="text-2xl">{isSpinning ? '⏳' : '🔄'}</span>
-          <span>{isSpinning ? 'Spinning...' : 'Spin the Wheel'}</span>
-        </button>
       </div>
     </div>
   );
