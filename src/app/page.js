@@ -16,35 +16,20 @@ export default function Home() {
   const [showHelp, setShowHelp] = useState(false);
 
   // Start the raffle with the given number of participants
-  const handleStartRaffle = (participantList) => {
+  const handleStartRaffle = (participantList, fromFile = false) => {
     setParticipants(participantList);
     setRaffleStarted(true);
-    // Check if the participant list is an array of objects (from file import)
-    if (participantList && participantList.length > 0 && typeof participantList[0] === 'object' && participantList[0] !== null && 'id' in participantList[0]) {
-      setIsFileImport(true);
-    } else {
-      setIsFileImport(false);
-    }
+    setIsFileImport(fromFile);
   };
 
   // Handle winner selection
-  const handleSelectWinner = (winningNumber) => {
-    // If winner is an object, show both id and name
-    if (typeof winningNumber === 'object' && winningNumber !== null) {
-      setWinner({ id: winningNumber.id, name: winningNumber.name });
-    } else {
-      setWinner({ id: winningNumber, name: undefined });
-    }
+  const handleSelectWinner = (winner) => {
+    setWinner({ id: winner.id, name: winner.name });
   };
 
   // Remove the winner from the participants list
   const handleRemoveWinner = () => {
-    setParticipants(participants.filter(p => {
-      if (typeof p === 'object' && p !== null) {
-        return p.id !== winner.id;
-      }
-      return p !== winner.id;
-    }));
+    setParticipants(participants.filter(p => p.id !== winner.id));
     setWinner(null);
   };
 

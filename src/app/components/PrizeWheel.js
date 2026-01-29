@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 
-const PrizeWheel = ({ participants, onSelectWinner, winningNumber }) => {
+const PrizeWheel = ({ participants, onSelectWinner }) => {
   const canvasRef = useRef(null);
   const arrowRef = useRef(null);
   const [rotation, setRotation] = useState(0);
@@ -58,12 +58,7 @@ const PrizeWheel = ({ participants, onSelectWinner, winningNumber }) => {
       ctx.textAlign = 'right';
       ctx.fillStyle = '#FFFFFF';
       ctx.font = 'bold 24px Arial';
-      // Show number if participant is a number, or ID if object, or fallback to string
-      let label = participant;
-      if (typeof participant === 'object' && participant !== null) {
-        label = participant.id || participant.name || '';
-      }
-      ctx.fillText(label.toString(), radius - 30, 8);
+      ctx.fillText(participant.id, radius - 30, 8);
       ctx.restore();
     });
     

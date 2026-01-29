@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect } from 'react';
 import Sparkles from './Sparkles';
 
 const WinnerAnnouncement = ({ winner, onRemoveWinner }) => {
