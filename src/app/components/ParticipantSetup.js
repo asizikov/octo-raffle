@@ -106,23 +106,20 @@ const ParticipantSetup = ({ onStartRaffle }) => {
 
   return (
     <div className="flex flex-col md:flex-row gap-8">
-      <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8 border border-gray-200">
-      <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
-        Set Up Your OctoRaffle
+      <div className="max-w-md w-full bg-white/70 backdrop-blur-sm rounded-2xl shadow-xl shadow-slate-200/50 p-8 border border-white/80">
+      <h2 className="text-xl font-semibold mb-6 text-center text-slate-800">
+        Set Up Your Raffle
       </h2>
       
-      <div className="mb-6 flex justify-center">
-        <div className="w-32 h-32 text-center">
-          {/* Octocat icon */}
-          <div className="relative mx-auto mt-2">
-            <Image src="/octo-raffle/octocat.png" alt="Octocat" width={96} height={96} className="w-24 h-24" />
-          </div>
+      <div className="mb-8 flex justify-center">
+        <div className="w-28 h-28 flex items-center justify-center rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100 border border-slate-200/50">
+          <Image src="/octo-raffle/octocat.png" alt="Octocat" width={80} height={80} className="w-20 h-20" />
         </div>
       </div>
       
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-5">
         <div>
-          <label htmlFor="participantCount" className="block mb-2 text-sm font-medium text-gray-700">
+          <label htmlFor="participantCount" className="block mb-2 text-sm font-medium text-slate-600">
             Number of Participants
           </label>
           <div className="relative">
@@ -138,18 +135,18 @@ const ParticipantSetup = ({ onStartRaffle }) => {
                   setError('');
                 }
               }}
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-center text-lg font-bold text-black [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+              className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-400 text-center text-lg font-semibold text-slate-700 transition-all duration-200 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             />
           </div>
-          {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
-          <p className="mt-2 text-sm text-gray-600">
+          {error && <p className="mt-2 text-sm text-red-500 font-medium">{error}</p>}
+          <p className="mt-2 text-xs text-slate-500">
             Enter a number between 2 and as many participants as you need.
           </p>
         </div>
         
         <button
           type="submit"
-          className="w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 font-bold text-lg"
+          className="w-full px-6 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white rounded-xl shadow-lg shadow-indigo-500/25 hover:shadow-xl hover:shadow-indigo-500/30 transition-all duration-200 font-semibold text-sm"
         >
           Start Raffle
         </button>
@@ -164,18 +161,21 @@ const ParticipantSetup = ({ onStartRaffle }) => {
         />
         <button
           type="button"
-          className="w-full px-6 py-3 mt-2 bg-gradient-to-r from-green-600 to-blue-500 hover:from-green-700 hover:to-blue-600 text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 font-bold text-lg"
+          className="w-full px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white rounded-xl shadow-lg shadow-emerald-500/25 hover:shadow-xl hover:shadow-emerald-500/30 transition-all duration-200 font-semibold text-sm flex items-center justify-center gap-2"
           onClick={() => fileInputRef.current && fileInputRef.current.click()}
           disabled={false}
         >
-          Upload Participants List (CSV/XLSX)
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+          </svg>
+          Upload Participants (CSV/XLSX)
         </button>
       </form>
       </div>
       {/* Show table if CSV participants exist */}
       {csvParticipants && (
         <div className="flex-1 max-w-lg w-full">
-          <h3 className="text-lg font-bold mb-2 text-gray-800">Participants List</h3>
+          <h3 className="text-sm font-semibold mb-3 text-slate-700 uppercase tracking-wide">Participants List</h3>
           <ParticipantTable participants={csvParticipants} />
         </div>
       )}
