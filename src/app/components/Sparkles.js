@@ -1,27 +1,24 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+const pseudoRandom = (seed) => {
+  const x = Math.sin(seed) * 10000;
+  return x - Math.floor(x);
+};
 
 const Sparkles = ({ count = 30, colors = ['#FFD700', '#FFA500', '#FF6347'] }) => {
-  const [sparkles, setSparkles] = useState([]);
+  const sparkles = Array.from({ length: count }, (_, i) => {
+    const baseSeed = i + count * 100 + colors.length * 10;
 
-  useEffect(() => {
-    const newSparkles = [];
-    
-    for (let i = 0; i < count; i++) {
-      newSparkles.push({
-        id: i,
-        size: Math.random() * 10 + 5,
-        left: `${Math.random() * 100}%`,
-        top: `${Math.random() * 100}%`,
-        animationDuration: `${Math.random() * 2 + 1}s`,
-        animationDelay: `${Math.random() * 0.5}s`,
-        color: colors[Math.floor(Math.random() * colors.length)],
-      });
-    }
-    
-    setSparkles(newSparkles);
-  }, [count, colors]);
+    return {
+      id: i,
+      size: pseudoRandom(baseSeed + 1) * 10 + 5,
+      left: `${pseudoRandom(baseSeed + 2) * 100}%`,
+      top: `${pseudoRandom(baseSeed + 3) * 100}%`,
+      animationDuration: `${pseudoRandom(baseSeed + 4) * 2 + 1}s`,
+      animationDelay: `${pseudoRandom(baseSeed + 5) * 0.5}s`,
+      color: colors[Math.floor(pseudoRandom(baseSeed + 6) * colors.length)],
+    };
+  });
 
   return (
     <>
