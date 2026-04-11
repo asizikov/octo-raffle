@@ -20,7 +20,7 @@ const WinnerAnnouncement = ({ winner, onRemoveWinner }) => {
         {winner.name && (
           <div className="text-lg text-slate-600 mb-6 font-medium">{winner.name}</div>
         )}
-        <Button onClick={onRemoveWinner}>
+        <Button onClick={onRemoveWinner} className="mx-auto">
           Remove &amp; Continue
         </Button>
       </div>
