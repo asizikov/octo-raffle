@@ -17,7 +17,7 @@ export const metadata = {
   description: "A fun and interactive wheel to randomly select winners for your raffle or contest",
   keywords: "raffle, prize wheel, random selection, octocat, github",
   icons: {
-    icon: '/octocat-favicon.svg',
+    icon: `${process.env.NEXT_PUBLIC_BASE_PATH || ''}/octocat-favicon.svg`,
   }
 };
 
@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/octocat-favicon.svg" />
+        <link rel="icon" href={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/octocat-favicon.svg`} />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen flex flex-col overflow-hidden`}
