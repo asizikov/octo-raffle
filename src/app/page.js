@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import Button from './components/Button';
 import ParticipantSetup from './components/ParticipantSetup';
 import PrizeWheel from './components/PrizeWheel';
 import WinnerAnnouncement from './components/WinnerAnnouncement';
@@ -40,7 +41,7 @@ export default function Home() {
           <div className="flex items-center space-x-3">
             {/* Octocat icon */}
             <div className="p-1.5 bg-white/10 rounded-xl">
-              <Image src="/octo-raffle/octocat.png" alt="Octocat" width={40} height={40} className="w-9 h-9" />
+              <Image src="/octocat.png" alt="Octocat" width={40} height={40} className="w-9 h-9" />
             </div>
             <div>
               <h1 className="text-xl font-semibold tracking-tight">OctoRaffle</h1>
@@ -110,12 +111,9 @@ export default function Home() {
                     </div>
                     <h2 className="text-xl font-semibold mb-2 text-slate-800">All Done!</h2>
                     <p className="text-slate-500 text-sm mb-6">All participants have been selected</p>
-                    <button
-                      onClick={() => setRaffleStarted(false)}
-                      className="px-6 py-2.5 bg-gradient-to-r from-indigo-600 to-violet-600 text-white text-sm font-medium rounded-xl shadow-lg shadow-indigo-500/25 hover:shadow-xl hover:shadow-indigo-500/30 hover:from-indigo-500 hover:to-violet-500 transition-all duration-200"
-                    >
+                    <Button onClick={() => setRaffleStarted(false)}>
                       Start New Raffle
-                    </button>
+                    </Button>
                   </div>
                 </div>
               )}
