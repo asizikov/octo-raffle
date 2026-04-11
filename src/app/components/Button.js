@@ -17,7 +17,7 @@ const Button = ({
   const base = [
     'px-6 py-3 rounded-xl font-semibold text-sm text-white',
     'bg-gradient-to-r shadow-lg transition-all duration-200',
-    'flex items-center justify-center gap-2',
+    'inline-flex items-center justify-center gap-2',
     fullWidth ? 'w-full' : '',
     disabled
       ? 'from-gray-400 to-gray-500 cursor-not-allowed opacity-70'
