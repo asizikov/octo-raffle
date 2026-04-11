@@ -3,6 +3,7 @@
 import { useState, useRef } from 'react';
 import Image from 'next/image';
 import * as XLSX from 'xlsx';
+import Button from './Button';
 import ParticipantTable from './ParticipantTable';
 import { parseCSVData, parseXLSXData } from '../utils/fileParser';
 
@@ -144,12 +145,9 @@ const ParticipantSetup = ({ onStartRaffle }) => {
           </p>
         </div>
         
-        <button
-          type="submit"
-          className="w-full px-6 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white rounded-xl shadow-lg shadow-indigo-500/25 hover:shadow-xl hover:shadow-indigo-500/30 transition-all duration-200 font-semibold text-sm"
-        >
+        <Button type="submit" fullWidth>
           Start Raffle
-        </button>
+        </Button>
 
         {/* Upload Participants List (CSV/XLSX) Button */}
         <input
@@ -159,17 +157,16 @@ const ParticipantSetup = ({ onStartRaffle }) => {
           style={{ display: 'none' }}
           onChange={handleFileUpload}
         />
-        <button
-          type="button"
-          className="w-full px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white rounded-xl shadow-lg shadow-emerald-500/25 hover:shadow-xl hover:shadow-emerald-500/30 transition-all duration-200 font-semibold text-sm flex items-center justify-center gap-2"
+        <Button
+          variant="upload"
+          fullWidth
           onClick={() => fileInputRef.current && fileInputRef.current.click()}
-          disabled={false}
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
           </svg>
           Upload Participants (CSV/XLSX)
-        </button>
+        </Button>
       </form>
       </div>
       {/* Show table if CSV participants exist */}

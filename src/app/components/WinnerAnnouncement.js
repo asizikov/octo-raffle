@@ -1,5 +1,6 @@
 'use client';
 
+import Button from './Button';
 import Sparkles from './Sparkles';
 
 const WinnerAnnouncement = ({ winner, onRemoveWinner }) => {
@@ -19,12 +20,9 @@ const WinnerAnnouncement = ({ winner, onRemoveWinner }) => {
         {winner.name && (
           <div className="text-lg text-slate-600 mb-6 font-medium">{winner.name}</div>
         )}
-        <button
-          onClick={onRemoveWinner}
-          className="px-6 py-2.5 bg-gradient-to-r from-indigo-600 to-violet-600 text-white text-sm font-medium rounded-xl shadow-lg shadow-indigo-500/25 hover:shadow-xl hover:shadow-indigo-500/30 hover:from-indigo-500 hover:to-violet-500 transition-all duration-200"
-        >
-          Remove & Continue
-        </button>
+        <Button onClick={onRemoveWinner}>
+          Remove &amp; Continue
+        </Button>
       </div>
     </div>
   );
