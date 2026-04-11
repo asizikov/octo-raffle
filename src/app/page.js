@@ -40,7 +40,7 @@ export default function Home() {
           <div className="flex items-center space-x-3">
             {/* Octocat icon */}
             <div className="p-1.5 bg-white/10 rounded-xl">
-              <Image src="/octo-raffle/octocat.png" alt="Octocat" width={40} height={40} className="w-9 h-9" />
+              <Image src="/octocat.png" alt="Octocat" width={40} height={40} className="w-9 h-9" />
             </div>
             <div>
               <h1 className="text-xl font-semibold tracking-tight">OctoRaffle</h1>

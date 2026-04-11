@@ -113,7 +113,7 @@ const ParticipantSetup = ({ onStartRaffle }) => {
       
       <div className="mb-8 flex justify-center">
         <div className="w-28 h-28 flex items-center justify-center rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100 border border-slate-200/50">
-          <Image src="/octo-raffle/octocat.png" alt="Octocat" width={80} height={80} className="w-20 h-20" />
+          <Image src="/octocat.png" alt="Octocat" width={80} height={80} className="w-20 h-20" />
         </div>
       </div>
       
