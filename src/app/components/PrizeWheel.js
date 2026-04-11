@@ -112,7 +112,7 @@ const PrizeWheel = ({ participants, onSelectWinner }) => {
         const pointerAngle = (3 * Math.PI / 2 - normalizedRotation + 2 * Math.PI) % (2 * Math.PI);
         
         // 4. Determine which slice number is at the pointer position
-        let selectedIndex = Math.floor((pointerAngle + sliceAngle / 2) / sliceAngle) % participants.length;
+        let selectedIndex = Math.floor(pointerAngle / sliceAngle) % participants.length;
         
         // Adjust for rounding errors or edge cases
         if (selectedIndex < 0) {
